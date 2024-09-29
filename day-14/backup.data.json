@@ -1,0 +1,65 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Basic Website Development",
+      "price": 500,
+      "created_at": "2023-01-01T08:30:00Z"
+    },
+    {
+      "id": 2,
+      "name": "E-commerce Website",
+      "price": 1500,
+      "created_at": "2023-01-15T12:45:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Custom Web Application",
+      "price": 2500,
+      "created_at": "2023-02-01T14:20:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Website Maintenance",
+      "price": 200,
+      "created_at": "2023-02-15T09:15:00Z"
+    },
+    {
+      "id": 5,
+      "name": "SEO Optimization",
+      "price": 300,
+      "created_at": "2023-03-01T16:50:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Website Redesign",
+      "price": 800,
+      "created_at": "2023-03-15T18:05:00Z"
+    },
+    {
+      "id": 7,
+      "name": "WordPress Development",
+      "price": 600,
+      "created_at": "2023-04-01T07:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Landing Page Design",
+      "price": 350,
+      "created_at": "2023-04-15T11:25:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Mobile-Responsive Web Design",
+      "price": 1200,
+      "created_at": "2023-05-01T15:40:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Web Hosting Setup",
+      "price": 100,
+      "created_at": "2023-05-15T10:30:00Z"
+    }
+  ],
+  "vouchers": []
+}

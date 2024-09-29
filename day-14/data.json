@@ -1,0 +1,207 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "E-commerce Website",
+      "price": 1500,
+      "created_at": "2023-01-15T12:45:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Custom Web Application",
+      "price": 2500,
+      "created_at": "2023-02-01T14:20:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Website Maintenance",
+      "price": 200,
+      "created_at": "2023-02-15T09:15:00Z"
+    },
+    {
+      "id": 5,
+      "name": "SEO Optimization",
+      "price": 300,
+      "created_at": "2023-03-01T16:50:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Website Redesign",
+      "price": 800,
+      "created_at": "2023-03-15T18:05:00Z"
+    },
+    {
+      "id": 7,
+      "name": "WordPress Development",
+      "price": 600,
+      "created_at": "2023-04-01T07:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Landing Page Design",
+      "price": 350,
+      "created_at": "2023-04-15T11:25:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Mobile-Responsive Web Design",
+      "price": 1200,
+      "created_at": "2023-05-01T15:40:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Web Hosting Setup",
+      "price": 100,
+      "created_at": "2023-05-15T10:30:00Z"
+    }
+  ],
+  "vouchers": [
+    {
+      "voucherId": "INV-20240929-72276",
+      "customerName": "Zue Pyae Paing",
+      "customerEmail": "aungyekyaw@gmail.com",
+      "saleDate": "2024-09-29",
+      "redirect": true,
+      "records": [
+        {
+          "id": 1727627995687,
+          "product": {
+            "id": 2,
+            "name": "E-commerce Website",
+            "price": 1500,
+            "created_at": "2023-01-15T12:45:00Z"
+          },
+          "quantity": 2,
+          "cost": 3000,
+          "created_at": "2024-09-29T16:39:55.687Z"
+        },
+        {
+          "id": 1727628000846,
+          "product": {
+            "id": 5,
+            "name": "SEO Optimization",
+            "price": 300,
+            "created_at": "2023-03-01T16:50:00Z"
+          },
+          "quantity": 3,
+          "cost": 900,
+          "created_at": "2024-09-29T16:40:00.846Z"
+        },
+        {
+          "id": 1727628011958,
+          "product": {
+            "id": 8,
+            "name": "Landing Page Design",
+            "price": 350,
+            "created_at": "2023-04-15T11:25:00Z"
+          },
+          "quantity": 2,
+          "cost": 700,
+          "created_at": "2024-09-29T16:40:11.958Z"
+        }
+      ],
+      "total": 4600,
+      "tax": 322.00000000000006,
+      "netTotal": 4922,
+      "id": 1
+    },
+    {
+      "voucherId": "INV-20240929-12283",
+      "customerName": "Zue Pyae Paing",
+      "customerEmail": "zuepyaepaing@gmail.com",
+      "saleDate": "2024-09-29",
+      "redirect": true,
+      "records": [
+        {
+          "id": 1727628502584,
+          "product": {
+            "id": 3,
+            "name": "Custom Web Application",
+            "price": 2500,
+            "created_at": "2023-02-01T14:20:00Z"
+          },
+          "quantity": 3,
+          "cost": 7500,
+          "created_at": "2024-09-29T16:48:22.585Z"
+        },
+        {
+          "id": 1727628507687,
+          "product": {
+            "id": 4,
+            "name": "Website Maintenance",
+            "price": 200,
+            "created_at": "2023-02-15T09:15:00Z"
+          },
+          "quantity": 2,
+          "cost": 400,
+          "created_at": "2024-09-29T16:48:27.687Z"
+        },
+        {
+          "id": 1727628512582,
+          "product": {
+            "id": 6,
+            "name": "Website Redesign",
+            "price": 800,
+            "created_at": "2023-03-15T18:05:00Z"
+          },
+          "quantity": 2,
+          "cost": 1600,
+          "created_at": "2024-09-29T16:48:32.582Z"
+        }
+      ],
+      "total": 9500,
+      "tax": 665.0000000000001,
+      "netTotal": 10165,
+      "id": 2
+    },
+    {
+      "voucherId": "INV-20240929-1119",
+      "customerName": "Zue Pyae Paing",
+      "customerEmail": "zuepyaepaing@gmail.com",
+      "saleDate": "2024-09-29",
+      "redirect": true,
+      "records": [
+        {
+          "id": 1727630693202,
+          "product": {
+            "id": 2,
+            "name": "E-commerce Website",
+            "price": 1500,
+            "created_at": "2023-01-15T12:45:00Z"
+          },
+          "quantity": 2,
+          "cost": 3000,
+          "created_at": "2024-09-29T17:24:53.202Z"
+        },
+        {
+          "id": 1727630696567,
+          "product": {
+            "id": 5,
+            "name": "SEO Optimization",
+            "price": 300,
+            "created_at": "2023-03-01T16:50:00Z"
+          },
+          "quantity": 1,
+          "cost": 300,
+          "created_at": "2024-09-29T17:24:56.567Z"
+        },
+        {
+          "id": 1727630700552,
+          "product": {
+            "id": 8,
+            "name": "Landing Page Design",
+            "price": 350,
+            "created_at": "2023-04-15T11:25:00Z"
+          },
+          "quantity": 2,
+          "cost": 700,
+          "created_at": "2024-09-29T17:25:00.552Z"
+        }
+      ],
+      "total": 4000,
+      "tax": 280,
+      "netTotal": 4280,
+      "id": 3
+    }
+  ]
+}

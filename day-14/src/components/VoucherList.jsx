@@ -1,7 +1,17 @@
 import React from "react";
-import { MonitorCheck, Pencil, Search, Trash2 } from "lucide-react";
+import { MonitorCheck, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import useSWR from "swr";
+import VoucherRow from "./VoucherRow";
+import VoucherSkeletonLoader from "./VoucherSkeletonLoader";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const VoucherList = () => {
+  const { data, isLoading, error } = useSWR(
+    import.meta.env.VITE_BASE_URL + "/vouchers",
+    fetcher
+  );
+
   return (
     <div>
       <div className="relative flex items-center justify-between m-3">
@@ -27,7 +37,7 @@ const VoucherList = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                #
+                # Voucher ID
               </th>
               <th scope="col" className="px-6 py-3">
                 Customer name
@@ -49,36 +59,11 @@ const VoucherList = () => {
                 There is no product.
               </td>
             </tr>
-            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                1
-              </th>
-              <td className="px-6 py-4">Kyaw Kyaw</td>
-              <td className="px-6 py-4 text-end">kyawkyaw@gmail.com</td>
-              <td className="px-6 py-4 text-end">
-                <p className="text-sm">8/Sep/2024</p>
-                <p className="text-sm">8:34pm</p>
-              </td>
-              <td className="px-6 py-4 text-end">
-                <div className="inline-flex rounded-md shadow-sm" role="group">
-                  <button
-                    type="button"
-                    className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
-                  >
-                    <Pencil size={18} />
-                  </button>
-                  <button
-                    type="button"
-                    className="px-4 py-2 text-sm font-medium text-red-600 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-              </td>
-            </tr>
+            {isLoading && <VoucherSkeletonLoader />}
+            {!isLoading &&
+              data?.map((voucher, index) => (
+                <VoucherRow key={index} voucher={voucher} />
+              ))}
           </tbody>
         </table>
       </div>
