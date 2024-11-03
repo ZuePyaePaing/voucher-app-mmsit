@@ -2,7 +2,7 @@ import React from 'react'
 
 const VoucherDetailSkeletonLoader = () => {
   return (
-    <div className="w-[90%] h-screen shadow-lg mx-auto px-5 py-4 flex flex-col gap-y-5 mt-4">
+    <div className="w-[148mm] shadow-lg  px-5 py-4 flex flex-col gap-y-5 mt-4">
   {/* Title Section */}
   <div className="animate-pulse">
     <div className="h-6 w-32 bg-gray-300 rounded"></div>

@@ -3,38 +3,36 @@ import Breadcrumb from "../components/Breadcrumb";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import useTokenStore from "../stores/useTokenStore";
 
 const AddProductForm = () => {
-  const [loading, setLoading] = useState(false);
-
+  const { token } = useTokenStore();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onSubmit = async (data) => {
     const submitData = {
-      name: data.name,
+      product_name: data.name,
       price: data.price,
-      created_at: new Date().toISOString(),
     };
-    setLoading(true);
+
     await fetch(`${import.meta.env.VITE_BASE_URL}/products`, {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(submitData),
     });
     if (data.redirect) {
-      navigate("/product");
+      navigate("/dashboard/product");
     }
     reset();
-    setLoading(false);
     toast.success("Product created successfully");
   };
   return (
@@ -42,7 +40,7 @@ const AddProductForm = () => {
       <Container>
         <Breadcrumb
           currentPageTitle={"AddProductForm"}
-          link={[{ title: "Module Product List", path: "/product" }]}
+          link={[{ title: "Module Product List", path: "/dashboard/product" }]}
         />
 
         <form className="w-full md:w-1/3" onSubmit={handleSubmit(onSubmit)}>
@@ -124,17 +122,17 @@ const AddProductForm = () => {
           </div>
           <div>
             <Link
-              to={"/product"}
+              to={"/dashboard/product"}
               className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             >
               Cancle
             </Link>
             <button
               type="submit"
-              disabled={loading}
+              disabled={isSubmitting}
               className="text-white mt-2  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              {loading ? "Loading..." : "Add Product"}
+              {isSubmitting ? "Loading..." : "Add Product"}
             </button>
           </div>
         </form>

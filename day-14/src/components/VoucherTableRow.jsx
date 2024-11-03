@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 const VoucherTableRow = ({
   record: {
     id,
-    product: { name, price },
+    product: { product_name, price },
     quantity,
     cost,
   },
@@ -33,13 +33,13 @@ const VoucherTableRow = ({
     <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <th
         scope="row"
-        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
         {index + 1}
       </th>
-      <td className="px-6 py-4"> {name}</td>
-      <td className="px-6 py-4 text-end">${price}</td>
-      <td className="px-6 py-4">
+      <td className="px-6 py-2"> {product_name}</td>
+      <td className="px-6 py-2 text-end">${price}</td>
+      <td className="px-6 py-2">
         <div className="flex items-center justify-end">
           <button
             onClick={handleDecreaseQuantity}

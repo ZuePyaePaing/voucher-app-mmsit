@@ -4,10 +4,12 @@ import Breadcrumb from "../components/Breadcrumb";
 import ProductList from "../components/ProductList";
 const ProductPage = () => {
   return (
-    <Container className={'space-y-2'}>
-      <Breadcrumb currentPageTitle="ProductPage" />
-      <ProductList />
-    </Container>
+    <section className="w-full min-h-screen">
+      <Container className={"space-y-2"}>
+        <Breadcrumb currentPageTitle="ProductPage" />
+        <ProductList />
+      </Container>
+    </section>
   );
 };
 

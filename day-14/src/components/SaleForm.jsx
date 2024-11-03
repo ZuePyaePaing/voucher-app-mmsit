@@ -2,16 +2,29 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useSWR from "swr";
 import useRecordStore from "../stores/useRecordStore";
+import useTokenStore from "../stores/useTokenStore";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (url) => {
+  const { token } = useTokenStore.getState();
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    return res.json();
+  });
+};
 const SaleForm = () => {
   const { addRecord, records, changeQuantity } = useRecordStore();
-
   const { data, isLoading } = useSWR(
-    `${import.meta.env.VITE_BASE_URL}/products`,
+    `${import.meta.env.VITE_BASE_URL}/products?limit=100`,
     fetcher
   );
-
   const {
     register,
     handleSubmit,
@@ -22,16 +35,15 @@ const SaleForm = () => {
   const onSubmit = async (data) => {
     const currentProduct = JSON.parse(data.product);
     const currentQuantity = JSON.parse(data.quantity);
-
     const isExited = records.find(
       ({ product: { id } }) => currentProduct.id === id
     );
-    
+
     if (isExited) {
       changeQuantity(isExited.id, currentQuantity);
     } else {
       addRecord({
-        id: Date.now(),
+        product_id: currentProduct.id,
         product: currentProduct,
         quantity: currentQuantity,
         cost: currentQuantity * currentProduct.price,
@@ -61,9 +73,9 @@ const SaleForm = () => {
               {isLoading ? (
                 <option>loading...</option>
               ) : (
-                data.map((item) => (
+                data?.data.map((item) => (
                   <option key={item.id} value={JSON.stringify(item)}>
-                    {item.name}
+                    {item.product_name}
                   </option>
                 ))
               )}
@@ -78,13 +90,17 @@ const SaleForm = () => {
             </label>
             <input
               type="number"
-              {...register("quantity", { required: true })}
+              {...register("quantity", {
+                required: true,
+                validate: (value) =>
+                  value > 0 || "Quantity must be greater than 0",
+              })}
               id="product-input"
-              placeholder="e.g. Apple"
+              placeholder="e.g. 1"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
             {errors.quantity && (
-              <span className="text-red-500">This field is required</span>
+              <span className="text-red-500 text-sm">{errors.quantity.message}</span>
             )}
           </div>
           <button
